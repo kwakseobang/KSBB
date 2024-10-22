@@ -1,8 +1,7 @@
-package com.kms.SBB.repository;
+package com.kms.SBB.repository.question;
 
-import com.kms.SBB.entitiy.Question;
+import com.kms.SBB.entitiy.question.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

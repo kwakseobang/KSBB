@@ -1,5 +1,6 @@
-package com.kms.SBB.entitiy;
+package com.kms.SBB.entitiy.question;
 
+import com.kms.SBB.entitiy.answer.Answer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,9 +1,9 @@
 package com.kms.SBB;
 
-import com.kms.SBB.entitiy.Answer;
-import com.kms.SBB.entitiy.Question;
-import com.kms.SBB.repository.AnswerRepository;
-import com.kms.SBB.repository.QuestionRepository;
+import com.kms.SBB.entitiy.answer.Answer;
+import com.kms.SBB.entitiy.question.Question;
+import com.kms.SBB.repository.answer.AnswerRepository;
+import com.kms.SBB.repository.question.QuestionRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
