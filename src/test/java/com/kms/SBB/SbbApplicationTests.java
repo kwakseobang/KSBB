@@ -4,6 +4,7 @@ import com.kms.SBB.entitiy.answer.Answer;
 import com.kms.SBB.entitiy.question.Question;
 import com.kms.SBB.repository.answer.AnswerRepository;
 import com.kms.SBB.repository.question.QuestionRepository;
+import com.kms.SBB.service.QuestionService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ class SbbApplicationTests {
 	private QuestionRepository questionRepository;
 	@Autowired
 	private AnswerRepository answerRepository;
+
+	@Autowired
+	private QuestionService questionService;
 	@Test
 	void testQuestion() {
 		Question q1 = new Question();
@@ -126,4 +130,15 @@ class SbbApplicationTests {
 		assertEquals(1, answerList.size());
 		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 	}
+
+
+//	대량 테스트 데이터
+@Test
+void testData() {
+	for (int i = 1; i <= 300; i++) {
+		String subject = String.format("테스트 데이터입니다:[%03d]", i);
+		String content = "내용무";
+		this.questionService.createQuestion(subject, content);
+	}
+}
 }

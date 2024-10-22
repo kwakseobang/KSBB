@@ -6,6 +6,7 @@ import com.kms.SBB.service.QuestionService;
 import com.kms.SBB.QuestionForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,11 +26,14 @@ public class questionController {
 
     // 매개변수로 Model 지정하면 객체가 자동으로 생성된다
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(
+            Model model,
+            @RequestParam(value = "page",defaultValue = "0") int page
+    ) {
         //model 객체는 자바 클래스(Java class)와 템플릿(template) 간의 연결 고리
         //질문 목록 다 가져오기
-        List<Question> questionList = this.questionService.getList();
-        model.addAttribute("questionList", questionList);
+        Page<Question> paging = this.questionService.getList(page);
+        model.addAttribute("paging", paging);
         return "question_list";
     }
 
