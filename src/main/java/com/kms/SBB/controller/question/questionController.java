@@ -8,10 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+
+@RequestMapping("/question")
 @RequiredArgsConstructor
 @Controller
 public class questionController {
@@ -21,7 +24,7 @@ public class questionController {
     private final QuestionService questionService;
 
     // 매개변수로 Model 지정하면 객체가 자동으로 생성된다
-    @GetMapping("/question/list")
+    @GetMapping("/list")
     public String list(Model model) {
         //model 객체는 자바 클래스(Java class)와 템플릿(template) 간의 연결 고리
         //질문 목록 다 가져오기
@@ -31,7 +34,7 @@ public class questionController {
     }
     //요청한 URL인 http://localhost:8080/question/detail/2의 숫자 2처럼 변하는
     // id값을 얻을 때에는 @PathVariable 애너테이션을 사용한다
-    @GetMapping(value = "/question/detail/{id}")
+    @GetMapping(value = "/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id) {
         Question question = this.questionService.getQuestion(id);
         model.addAttribute("question",question);
