@@ -14,9 +14,10 @@
     </tr>
     </thead>
     <tbody>
-<!--  타임리프는 Model 객체에 저장한 questionList를 ${questionList}로 읽을 수 있다  -->
-    <tr th:each="question : ${questionList}">
-        <td th:text="${question.subject}"></td>
+    <tr th:each="question, index : ${questionList}">
+        <td>
+            <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+        </td>
         <td th:text="${question.createDate}"></td>
     </tr>
     </tbody>
